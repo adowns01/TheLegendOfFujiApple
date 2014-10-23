@@ -1,8 +1,21 @@
 $(document).ready(function(){
+	// create backpack
+
+	my_backpackView = new BackpackView();
+	my_backpackModel = new Backpack();
+	my_backpackController = new BackpackController(my_backpackModel, my_backpackView);
+
+	controllers = {
+		backpack: my_backpackController
+	}
+
 	
-	my_game_controller = new gameController()
+	my_game_controller = new gameController(controllers);
+
 	my_game_controller.setUpEventListeners();
+
 	setTimeout(my_game_controller.loadIntro, 50);
+
 })
 
 IN_STARTUP_SCREEN = false;
@@ -12,21 +25,23 @@ IN_MAIN_PLAY = false;
 $("canvas").attr('width', 700);
 $("canvas").attr('height', 300);
 CANVAS = document.getElementById("screen").getContext('2d')
+
 FUJI = new Image();
 FUJI.src = 'fuji.png';
+
 BACKGROUND = new Image();
 BACKGROUND.src = 'fuji-bg.png'
-BACKPACK = new Image();
-BACKPACK.src = 'backpack.png'
+
 STARTUP_SCREEN = new Image();
 STARTUP_SCREEN.src = 'startup-screen-bg.png'
 
 
 
 
-function gameController(){
+function gameController(controllers){
 	this.in_startup_screen = false;
 	this.in_main_game_play = false;
+	this.backpackController = controllers.backpack;
 }
 
 gameController.prototype = {
@@ -34,6 +49,7 @@ gameController.prototype = {
 		CANVAS.drawImage(STARTUP_SCREEN, 0, 0, 700, 300)
 		this.in_startup_screen = true;
 		IN_STARTUP_SCREEN = true;
+
 	}, 
 	loadMainPlay: function(){
 		IN_MAIN_PLAY = true;
@@ -44,6 +60,7 @@ gameController.prototype = {
 	}, 
 	setUpEventListeners: function(){
 		$(window).keydown(this.determineKeyPressAction.bind(this));
+
 	}, 
 	determineKeyPressAction: function(e){
 		if (IN_STARTUP_SCREEN){
@@ -52,7 +69,7 @@ gameController.prototype = {
 				this.loadMainPlay();
 			}
 		}
-		else if (!backpack.is_open || e.keyCode == 90){
+		else if (!this.backpackController.is_open() || e.keyCode == 90){
 			switch (e.keyCode){
 			case 37:// left arrow
 			fuji.moveLeft();
@@ -67,7 +84,7 @@ gameController.prototype = {
 			fuji.moveDown();
 			break;
 			case 90: // z
-			backpack.toggle();
+			this.backpackController.toggle();
 			break;
 			case 32: // space
 			putItemRandomlyOnPage();
