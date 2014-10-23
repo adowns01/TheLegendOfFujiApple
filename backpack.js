@@ -1,16 +1,18 @@
-backpack = {
-	is_open: false,
-	itemURLS:[],
-	toggle: function(){
-		if (this.is_open){
-			this.close();
-		} else {
-			backpackView.drawBackpack();
-		}
+// backpack = {
+// 	is_open: false,
+// 	items = []
+// }
+
+function Backpack(){
+	this.is_open = false;
+	this.items = [];
+}
+
+Backpack.prototype = {
+	close: function() {
+		this.is_open = false
 	},
-	close: function(){
-		drawBackground();
-		fujiView.draw1(fuji.left, fuji.top);
-		this.is_open = false;
+	openBag: function(){
+		this.is_open = true;
 	}
 }
