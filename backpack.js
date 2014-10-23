@@ -5,7 +5,7 @@ backpack = {
 		if (this.is_open){
 			this.close();
 		} else {
-			drawBackpack();
+			backpackView.drawBackpack();
 		}
 	},
 	close: function(){
