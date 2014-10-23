@@ -1,8 +1,3 @@
-ITEMS = []
-ITEM_PATHS = ['stick.png', 'marble.png', 'seeds.png', 'feather.png', 'bottle-cap.png']
-ITEMS_ON_PAGE = []
-
-
 backpackView = {
 	items: [],
 	drawBackpack: function(){
@@ -11,7 +6,7 @@ backpackView = {
 		this.drawItems();
 	}, 
 	drawItems: function(){
-		for(var i=0; this.items.length<5; i++){
+		for(var i=0; i<this.items.length; i++){
 			CANVAS.drawImage(this.items[i], 190 + i*100,225,50,50)
 		}
 	}
