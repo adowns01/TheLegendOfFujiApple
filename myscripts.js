@@ -16,8 +16,7 @@ FUJI = new Image();
 FUJI.src = 'fuji.png';
 BACKGROUND = new Image();
 BACKGROUND.src = 'fuji-bg.png'
-BACKPACK = new Image();
-BACKPACK.src = 'backpack.png'
+
 STARTUP_SCREEN = new Image();
 STARTUP_SCREEN.src = 'startup-screen-bg.png'
 

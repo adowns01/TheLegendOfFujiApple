@@ -1,7 +1,11 @@
+BACKPACK = new Image();
+BACKPACK.src = 'backpack.png'
+
 backpackView = {
 	items: [],
+	backpackImage: BACKPACK,
 	drawBackpack: function(){
-		CANVAS.drawImage(BACKPACK, 0, 0, 700, 300)
+		CANVAS.drawImage(this.backpackImage, 0, 0, 700, 300)
 		backpack.is_open= true;
 		this.drawItems();
 	}, 
