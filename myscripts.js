@@ -3,7 +3,6 @@ $(document).ready(function(){
 	my_game_controller = new gameController()
 	my_game_controller.setUpEventListeners();
 	setTimeout(my_game_controller.loadIntro, 50);
-	setUpItems();
 })
 
 IN_STARTUP_SCREEN = false;
@@ -87,36 +86,10 @@ function drawBackground(){
 function drawAllItemsOnScreen(){
 	for(var i = 0; i < ITEMS_ON_PAGE.length; i++){
 		item = ITEMS_ON_PAGE[i]
-		CANVAS.drawImage(item.image, item.x, item.y, item.xSize, item.ySize)
+		CANVAS.drawImage(item.image, item.x, item.y, item.width, item.height)
 	}
 }
 
 
-function putItemRandomlyOnPage(){
-	y = Math.random() * 250
-	x = Math.random() * 650
-	itemIndex = Math.floor(Math.random()*ITEMS.length)
-	CANVAS.drawImage(ITEMS[itemIndex], x, y, 50, 50)
-	displayed_item = {
-		x: x, 
-		y: y, 
-		xSize: 50, 
-		ySize: 50,
-		image: ITEMS[itemIndex]
-	}
-	ITEMS_ON_PAGE.push(displayed_item)
-}
 
-
-function setUpItems(){
-	for(var i = 0; i<ITEM_PATHS.length; i++){
-		addItems(ITEM_PATHS[i])
-	}
-}
-
-function addItems(url){
-	newItem= new Image();
-	newItem.src = url
-	ITEMS.push(newItem)
-}
 
