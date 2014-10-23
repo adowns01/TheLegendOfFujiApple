@@ -41,6 +41,7 @@ gameController.prototype = {
 	}, 
 	loadMainPlay: function(){
 		IN_MAIN_PLAY = true;
+		this.in_startup_screen = false;
 		this.in_main_game_play = true;
 		drawBackground();
 		fujiView.draw1(0,0);
@@ -135,12 +136,5 @@ function drawBackpackItems(){
 
 
 }
-
-function drawBackpack(){
-	CANVAS.drawImage(BACKPACK, 0, 0, 700, 300)
-	backpack.is_open= true;
-	drawBackpackItems();
-}
-
 
 
