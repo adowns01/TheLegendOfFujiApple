@@ -1,6 +1,9 @@
 $(document).ready(function(){
 	// basic setup
-		setupCanvas();
+	setupCanvas();
+
+	// background
+	var myBackground = new Background();
 
 	// create fuji
 	var myFuji = new Fuji();
@@ -8,6 +11,7 @@ $(document).ready(function(){
 
 	// pass the view fuji model
 	Draw.fuji = myFuji;
+	Draw.currentBackground = myBackground;
 
 	// create backpack
 	var my_backpackModel = new Backpack();
@@ -33,8 +37,6 @@ function setupCanvas() {
 	$("canvas").attr('height', 300);
 	CANVAS = document.getElementById("screen").getContext('2d')
 }
-
-
 
 
 
