@@ -17,27 +17,34 @@ BACKGROUND.src = 'fuji-bg.png'
 BACKPACK = new Image();
 BACKPACK.src = 'backpack.png';
 
-background = {
+STARTUP_SCREEN = new Image();
+STARTUP_SCREEN.src = 'startup-screen-bg.png'
+
+Draw = {
 	fuji: null,
 	itemsOnScreen: [],
-	draw: function(){
-		this.drawBackground();
-		this.drawAllItemsOnScreen();
-		this.drawFuji();
+
+	screen: function(){
+		this.background();
+		this.items();
+		this.fujiApple();
 	}, 
-	drawAllItemsOnScreen: function(){
+	items: function(){
 
 	}, 
-	drawBackground: function(){
+	background: function(){
 		CANVAS.drawImage(BACKGROUND, 0, 0, 700, 300)
 		console.log('drawing background')
 	},
-	drawFuji: function(){
+	fujiApple: function(){
 		CANVAS.drawImage(FUJI, 0, 0, 72, 72, this.fuji.left, this.fuji.top, 72, 72)
 	}, 
-	drawBackpack: function(){
+	backpack: function(){
 		CANVAS.drawImage(BACKPACK, 0, 0, 700, 300)
 		// this.drawItems();
+	}, 
+	introScreen: function(){
+		CANVAS.drawImage(STARTUP_SCREEN, 0, 0, 700, 300)
 	}
 }
 

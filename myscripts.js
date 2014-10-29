@@ -1,101 +1,49 @@
 $(document).ready(function(){
+	// basic setup
+		setupCanvas();
 
 	// create fuji
-	myFuji = new Fuji();
-	myFujiController = new FujiController(myFuji);
+	var myFuji = new Fuji();
+	var myFujiController = new FujiController(myFuji);
 
 	// pass the view fuji model
-	background.fuji = myFuji;
+	Draw.fuji = myFuji;
 
 	// create backpack
-	my_backpackModel = new Backpack();
-	my_backpackController = new BackpackController(my_backpackModel);
+	var my_backpackModel = new Backpack();
+	var my_backpackController = new BackpackController(my_backpackModel);
 
-	controllers = {
+	// create hash of controllers to pass to game controller
+	var controllers = {
 		backpack: my_backpackController, 
 		fuji: myFujiController
 	}
 
-	
-	my_game_controller = new gameController(controllers);
+	// create game controller
+	var my_game_controller = new gameController(controllers);
 
+	// start game
 	my_game_controller.setUpEventListeners();
-
 	setTimeout(my_game_controller.loadIntro, 50);
 
 })
+
+function setupCanvas() {
+	$("canvas").attr('width', 700);
+	$("canvas").attr('height', 300);
+	CANVAS = document.getElementById("screen").getContext('2d')
+}
+
+
 
 IN_STARTUP_SCREEN = false;
 IN_MAIN_PLAY = false;
 
 
-$("canvas").attr('width', 700);
-$("canvas").attr('height', 300);
-CANVAS = document.getElementById("screen").getContext('2d')
-
-
-
-STARTUP_SCREEN = new Image();
-STARTUP_SCREEN.src = 'startup-screen-bg.png'
 
 
 
 
-function gameController(controllers){
-	this.in_startup_screen = false;
-	this.in_main_game_play = false;
-	this.backpackController = controllers.backpack;
-	this.fujiController = controllers.fuji;
-}
-
-gameController.prototype = {
-	loadIntro: function(){
-		CANVAS.drawImage(STARTUP_SCREEN, 0, 0, 700, 300)
-		this.in_startup_screen = true;
-		IN_STARTUP_SCREEN = true;
-
-	}, 
-	loadMainPlay: function(){
-		IN_MAIN_PLAY = true;
-		this.in_startup_screen = false;
-		this.in_main_game_play = true;
-		background.draw();
-	}, 
-	setUpEventListeners: function(){
-		$(window).keydown(this.determineKeyPressAction.bind(this));
-
-	}, 
-	determineKeyPressAction: function(e){
-		if (IN_STARTUP_SCREEN){
-			if (e.keyCode == 13){
-				IN_STARTUP_SCREEN = false;
-				this.loadMainPlay();
-			}
-		}
-		else if (!this.backpackController.is_open() || e.keyCode == 90){
-			switch (e.keyCode){
-			case 37:// left arrow
-			this.fujiController.moveLeft();
-			break;
-			case 39: //right arrow
-			this.fujiController.moveRight();
-			break;
-			case 38: //up arrow
-			this.fujiController.moveUp();
-			break;
-			case 40: //down arrow
-			this.fujiController.moveDown();
-			break;
-			case 90: // z
-			this.backpackController.toggle();
-			break;
-			case 32: // space
-			putItemRandomlyOnPage();
-			break;
-			}
-		}
-	} 
-}
 
 
 

@@ -11,12 +11,12 @@ BackpackController.prototype = {
 		}
 	},
 	closeBackpack: function(){
-		background.draw();
+		Draw.screen();
 		this.model.close();
 	}, 
 	openBackpack: function(){
 		this.model.openBag();
-		background.drawBackpack();
+		Draw.backpack();
 	},
 	is_open: function(){
 		return this.model.is_open;
