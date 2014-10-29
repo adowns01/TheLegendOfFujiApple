@@ -14,20 +14,45 @@ FUJI.src = 'fuji.png';
 BACKGROUND = new Image();
 BACKGROUND.src = 'fuji-bg.png'
 
-background = {
+BACKPACK = new Image();
+BACKPACK.src = 'backpack.png';
+
+STARTUP_SCREEN = new Image();
+STARTUP_SCREEN.src = 'startup-screen-bg.png'
+
+Draw = {
 	fuji: null,
-	draw: function(){
-		this.drawBackground();
-		this.drawAllItemsOnScreen();
-		this.drawFuji();
+	itemsOnScreen: [],
+
+	screen: function(){
+		this.background();
+		this.items();
+		this.fujiApple();
 	}, 
-	drawAllItemsOnScreen: function(){
+	items: function(){
 
 	}, 
-	drawBackground: function(){
+	background: function(){
 		CANVAS.drawImage(BACKGROUND, 0, 0, 700, 300)
-	}
-	drawFuji: function(){
+		console.log('drawing background')
+	},
+	fujiApple: function(){
 		CANVAS.drawImage(FUJI, 0, 0, 72, 72, this.fuji.left, this.fuji.top, 72, 72)
+	}, 
+	backpack: function(){
+		CANVAS.drawImage(BACKPACK, 0, 0, 700, 300)
+		// this.drawItems();
+	}, 
+	introScreen: function(){
+		CANVAS.drawImage(STARTUP_SCREEN, 0, 0, 700, 300)
 	}
 }
+
+	// drawBackpackItems: function(){
+	// 	for(var i=0; i<this.items.length; i++){
+	// 		CANVAS.drawImage(this.items[i], 190 + i*100,225,50,50)
+	// 	}
+	// }
+
+
+

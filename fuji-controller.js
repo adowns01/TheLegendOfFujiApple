@@ -5,18 +5,18 @@ function FujiController(model) {
 FujiController.prototype = {
 	moveLeft: function(){
 		this.model.moveLeft();
-		background.draw();
+		Draw.screen();
 	}, 
 	moveRight: function(){
 		this.model.moveRight();
-		background.draw();
+		Draw.screen();
 	}, 
 	moveUp: function(){
 		this.model.moveUp();
-		background.draw();
+		Draw.screen();
 	}, 
 	moveDown: function(){
 		this.model.moveDown();
-		background.draw();
+		Draw.screen();
 	}
 }
