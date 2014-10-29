@@ -34,7 +34,6 @@ Draw = {
 	}, 
 	background: function(){
 		CANVAS.drawImage(BACKGROUND, 0, 0, 700, 300)
-		console.log('drawing background')
 	},
 	fujiApple: function(){
 		CANVAS.drawImage(FUJI, 0, 0, 72, 72, this.fuji.left, this.fuji.top, 72, 72)

@@ -36,13 +36,6 @@ function setupCanvas() {
 
 
 
-IN_STARTUP_SCREEN = false;
-IN_MAIN_PLAY = false;
-
-
-
-
-
 
 
 
