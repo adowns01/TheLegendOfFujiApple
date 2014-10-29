@@ -1,58 +1,11 @@
-// function drawBackground(){
-// 	drawAllItemsOnScreen();
-// }
-
-// function drawAllItemsOnScreen(){
-// 	for(var i = 0; i < ITEMS_ON_PAGE.length; i++){
-// 		item = ITEMS_ON_PAGE[i]
-// 		CANVAS.drawImage(item.image, item.x, item.y, item.width, item.height)
-// 	}
-// }
-FUJI = new Image();
-FUJI.src = 'fuji.png';
-
-BACKGROUND = new Image();
-BACKGROUND.src = 'fuji-bg.png'
-
-BACKPACK = new Image();
-BACKPACK.src = 'backpack.png';
-
-STARTUP_SCREEN = new Image();
-STARTUP_SCREEN.src = 'startup-screen-bg.png'
-
-Draw = {
-	fuji: null,
-	itemsOnScreen: [],
-
-	screen: function(){
-		this.background();
-		this.items();
-		this.fujiApple();
-	}, 
-	items: function(){
-
-	}, 
-	background: function(){
-		CANVAS.drawImage(BACKGROUND, 0, 0, 700, 300)
-		console.log('drawing background')
-	},
-	fujiApple: function(){
-		CANVAS.drawImage(FUJI, 0, 0, 72, 72, this.fuji.left, this.fuji.top, 72, 72)
-	}, 
-	backpack: function(){
-		CANVAS.drawImage(BACKPACK, 0, 0, 700, 300)
-		// this.drawItems();
-	}, 
-	introScreen: function(){
-		CANVAS.drawImage(STARTUP_SCREEN, 0, 0, 700, 300)
-	}
+function Background(){
+	this.items = [];
+	this.createItems();
 }
 
-	// drawBackpackItems: function(){
-	// 	for(var i=0; i<this.items.length; i++){
-	// 		CANVAS.drawImage(this.items[i], 190 + i*100,225,50,50)
-	// 	}
-	// }
-
-
-
+Background.prototype = {
+	createItems: function(){
+		var stick = new Item('stick.png', 100, 100);
+		this.items.push(stick);
+	}
+}
