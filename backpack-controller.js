@@ -1,6 +1,5 @@
-function BackpackController(model, view){
+function BackpackController(model){
 	this.model = model;
-	this.view = view; 
 }
 
 BackpackController.prototype = {
@@ -13,16 +12,13 @@ BackpackController.prototype = {
 	},
 	closeBackpack: function(){
 		background.draw();
-		this.model.is_open = false;
+		this.model.close();
 	}, 
 	openBackpack: function(){
-		this.drawBackpack();
+		this.model.openBag();
+		background.drawBackpack();
 	},
 	is_open: function(){
 		return this.model.is_open;
-	}, 
-	drawBackpack: function(){
-		this.model.openBag();
-		this.view.drawBackpack();
 	}
 }

@@ -8,9 +8,8 @@ $(document).ready(function(){
 	background.fuji = myFuji;
 
 	// create backpack
-	my_backpackView = new BackpackView();
 	my_backpackModel = new Backpack();
-	my_backpackController = new BackpackController(my_backpackModel, my_backpackView);
+	my_backpackController = new BackpackController(my_backpackModel);
 
 	controllers = {
 		backpack: my_backpackController, 
@@ -61,7 +60,6 @@ gameController.prototype = {
 		this.in_startup_screen = false;
 		this.in_main_game_play = true;
 		background.draw();
-		this.fujiController.draw();
 	}, 
 	setUpEventListeners: function(){
 		$(window).keydown(this.determineKeyPressAction.bind(this));
