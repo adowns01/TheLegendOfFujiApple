@@ -1,8 +1,3 @@
-// backpack = {
-// 	is_open: false,
-// 	items = []
-// }
-
 function Backpack(){
 	this.is_open = false;
 	this.items = [];
