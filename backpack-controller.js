@@ -12,8 +12,7 @@ BackpackController.prototype = {
 		}
 	},
 	closeBackpack: function(){
-		drawBackground();
-		fujiView.draw1(fuji.left, fuji.top);
+		background.draw();
 		this.model.is_open = false;
 	}, 
 	openBackpack: function(){

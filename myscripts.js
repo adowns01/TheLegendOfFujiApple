@@ -1,12 +1,20 @@
 $(document).ready(function(){
-	// create backpack
 
+	// create fuji
+	myFuji = new Fuji();
+	myFujiController = new FujiController(myFuji);
+
+	// pass the view fuji model
+	background.fuji = myFuji;
+
+	// create backpack
 	my_backpackView = new BackpackView();
 	my_backpackModel = new Backpack();
 	my_backpackController = new BackpackController(my_backpackModel, my_backpackView);
 
 	controllers = {
-		backpack: my_backpackController
+		backpack: my_backpackController, 
+		fuji: myFujiController
 	}
 
 	
@@ -26,11 +34,7 @@ $("canvas").attr('width', 700);
 $("canvas").attr('height', 300);
 CANVAS = document.getElementById("screen").getContext('2d')
 
-FUJI = new Image();
-FUJI.src = 'fuji.png';
 
-BACKGROUND = new Image();
-BACKGROUND.src = 'fuji-bg.png'
 
 STARTUP_SCREEN = new Image();
 STARTUP_SCREEN.src = 'startup-screen-bg.png'
@@ -42,6 +46,7 @@ function gameController(controllers){
 	this.in_startup_screen = false;
 	this.in_main_game_play = false;
 	this.backpackController = controllers.backpack;
+	this.fujiController = controllers.fuji;
 }
 
 gameController.prototype = {
@@ -55,8 +60,8 @@ gameController.prototype = {
 		IN_MAIN_PLAY = true;
 		this.in_startup_screen = false;
 		this.in_main_game_play = true;
-		drawBackground();
-		fujiView.draw1(0,0);
+		background.draw();
+		this.fujiController.draw();
 	}, 
 	setUpEventListeners: function(){
 		$(window).keydown(this.determineKeyPressAction.bind(this));
@@ -72,16 +77,16 @@ gameController.prototype = {
 		else if (!this.backpackController.is_open() || e.keyCode == 90){
 			switch (e.keyCode){
 			case 37:// left arrow
-			fuji.moveLeft();
+			this.fujiController.moveLeft();
 			break;
 			case 39: //right arrow
-			fuji.moveRight();
+			this.fujiController.moveRight();
 			break;
 			case 38: //up arrow
-			fuji.moveUp();
+			this.fujiController.moveUp();
 			break;
 			case 40: //down arrow
-			fuji.moveDown();
+			this.fujiController.moveDown();
 			break;
 			case 90: // z
 			this.backpackController.toggle();
@@ -89,23 +94,11 @@ gameController.prototype = {
 			case 32: // space
 			putItemRandomlyOnPage();
 			break;
+			}
 		}
-	}
-}
-}
-
-
-function drawBackground(){
-	CANVAS.drawImage(BACKGROUND, 0, 0, 700, 300)
-	drawAllItemsOnScreen();
+	} 
 }
 
-function drawAllItemsOnScreen(){
-	for(var i = 0; i < ITEMS_ON_PAGE.length; i++){
-		item = ITEMS_ON_PAGE[i]
-		CANVAS.drawImage(item.image, item.x, item.y, item.width, item.height)
-	}
-}
 
 
 

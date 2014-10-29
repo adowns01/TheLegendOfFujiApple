@@ -1,22 +1,20 @@
-var fuji = {
-	top: 0, 
-	left: 0,
-	stepSize: 10,
+function Fuji() {
+	this.top = 0;
+	this.left = 0;
+	this.stepSize = 10;
+}
+
+Fuji.prototype = {
 	moveLeft: function(){
 		this.left -= this.stepSize;
-		fujiView.draw1(this.left, this.top)
 	}, 
 	moveRight: function(){
 		this.left += this.stepSize;
-		fujiView.draw1(this.left, this.top)
 	}, 
 	moveUp: function(){
 		this.top -= this.stepSize;
-		fujiView.draw1(this.left, this.top)
 	}, 
 	moveDown: function(){
 		this.top += this.stepSize;
-		fujiView.draw1(this.left, this.top)
 	}
 }
-
