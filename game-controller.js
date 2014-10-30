@@ -1,8 +1,9 @@
-function gameController(controllers){
+function gameController(controllers, currentBackground){
 	this.in_startup_screen = true;
 	this.in_main_game_play = false;
 	this.backpackController = controllers.backpack;
 	this.fujiController = controllers.fuji;
+	this.currentBackground = currentBackground;
 }
 
 gameController.prototype = {
@@ -42,9 +43,45 @@ gameController.prototype = {
 			putItemRandomlyOnPage();
 			break;
 			}
+			this.checkPickUpItem();
 		}
-	} 
+	},
+	checkPickUpItem: function(){
+		var item = touchingItem(this.fujiController.fujiLocation(), this.currentBackground.items);
+		if (item){
+			this.addToBackPack(item);
+			this.removeItemFromScreen(item);
+		}
+	}, 
+	addToBackPack: function(item){
+		this.backpackController.addItem(item)
+	}, 
+	removeItemFromScreen: function(item){
+		Draw.removeItemFromScreen(item)
+	}
 }
 
+function touchingItem(fujiLocation, items){
+	for(var i = 0; i < items.length; i++){
+		if ( areTouching(fujiLocation, items[i]) ){
+			return items[i];
+		}
+	}
+}
+
+function areTouching(fujiLocation, item){
+	if( inRange(fujiLocation[0], item.x) && inRange(fujiLocation[1], item.y)){
+		return true;
+	}
+
+}
+
+function inRange(fujiCord, itemCord){
+	if (Math.abs(fujiCord - itemCord) <= TOUCHING_RANGE){
+		return true;
+	}
+}
+
+TOUCHING_RANGE = 20;
 
 

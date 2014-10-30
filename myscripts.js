@@ -9,13 +9,12 @@ $(document).ready(function(){
 	var myFuji = new Fuji();
 	var myFujiController = new FujiController(myFuji);
 
-	// pass the view fuji model
-	Draw.fuji = myFuji;
-	Draw.currentBackground = myBackground;
+
 
 	// create backpack
 	var my_backpackModel = new Backpack();
 	var my_backpackController = new BackpackController(my_backpackModel);
+
 
 	// create hash of controllers to pass to game controller
 	var controllers = {
@@ -23,8 +22,13 @@ $(document).ready(function(){
 		fuji: myFujiController
 	}
 
+	// pass the view fuji model
+	Draw.fuji = myFuji;
+	Draw.currentBackground = myBackground;
+	Draw.fujiBackpack = my_backpackModel;
+
 	// create game controller
-	var my_game_controller = new gameController(controllers);
+	var my_game_controller = new gameController(controllers, myBackground);
 
 	// start game
 	my_game_controller.setUpEventListeners();
