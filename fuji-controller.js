@@ -18,5 +18,8 @@ FujiController.prototype = {
 	moveDown: function(){
 		this.model.moveDown();
 		Draw.screen();
+	}, 
+	fujiLocation: function(){
+		return [this.model.left, this.model.top];
 	}
 }

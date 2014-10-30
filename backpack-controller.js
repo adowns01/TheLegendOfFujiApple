@@ -20,5 +20,8 @@ BackpackController.prototype = {
 	},
 	is_open: function(){
 		return this.model.is_open;
+	}, 
+	addItem: function(item){
+		this.model.addItem(item)
 	}
 }

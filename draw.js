@@ -1,13 +1,3 @@
-// function drawBackground(){
-// 	drawAllItemsOnScreen();
-// }
-
-// function drawAllItemsOnScreen(){
-// 	for(var i = 0; i < ITEMS_ON_PAGE.length; i++){
-// 		item = ITEMS_ON_PAGE[i]
-// 		CANVAS.drawImage(item.image, item.x, item.y, item.width, item.height)
-// 	}
-// }
 FUJI = new Image();
 FUJI.src = 'fuji.png';
 
@@ -22,8 +12,8 @@ STARTUP_SCREEN.src = 'startup-screen-bg.png'
 
 Draw = {
 	fuji: null,
-	itemsOnScreen: [],
 	currentBackground: null,
+	fujiBackpack: null, 
 
 	screen: function(){
 		this.background();
@@ -45,18 +35,27 @@ Draw = {
 	}, 
 	backpack: function(){
 		CANVAS.drawImage(BACKPACK, 0, 0, 700, 300)
-		this.items();
+		this.backpackItems();
 	}, 
+	backpackItems: function(){
+		for(var i=0; i<this.fujiBackpack.items.length; i++){
+			CANVAS.drawImage(this.fujiBackpack.items[i].image, 190 + i*100,225,50,50)
+		}
+	},
 	introScreen: function(){
 		CANVAS.drawImage(STARTUP_SCREEN, 0, 0, 700, 300)
+	}, 
+	removeItemFromScreen: function(itemToRemove){
+		var items = this.currentBackground.items;
+		for(var i = 0; i < items.length; i++){
+			console.log("in array", items[i])
+			if(items[i] == itemToRemove){
+				items.splice(i, 1);
+			}
+		}
+		this.screen();
 	}
 }
-
-	// drawBackpackItems: function(){
-	// 	for(var i=0; i<this.items.length; i++){
-	// 		CANVAS.drawImage(this.items[i], 190 + i*100,225,50,50)
-	// 	}
-	// }
 
 
 
