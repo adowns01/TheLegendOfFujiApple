@@ -1,5 +1,6 @@
 FUJI_STEP_SIZE = 10;
 
+
 function Fuji() {
 	this.top = 0;
 	this.left = 0;

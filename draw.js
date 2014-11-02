@@ -1,5 +1,7 @@
 FUJI = new Image();
 FUJI.src = 'fuji.png';
+FUJI_HEIGHT = 72;
+FUJI_WIDTH = 72;
 
 BACKGROUND = new Image();
 BACKGROUND.src = 'fuji-bg.png'
@@ -38,7 +40,7 @@ Draw = {
 		CANVAS.drawImage(BACKGROUND, 0, 0, 700, 300)
 	},
 	fujiApple: function(){
-		CANVAS.drawImage(FUJI, 0, 0, 72, 72, this.fuji.left, this.fuji.top, 72, 72)
+		CANVAS.drawImage(FUJI, 0, 0, FUJI_WIDTH, FUJI_HEIGHT, this.fuji.left, this.fuji.top, FUJI_WIDTH, FUJI_HEIGHT);
 	}, 
 	backpack: function(){
 		CANVAS.drawImage(BACKPACK, 0, 0, 700, 300)

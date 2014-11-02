@@ -11,7 +11,7 @@ Background.prototype = {
 		this.items.push(stick);
 	}, 
 	createObstacles: function(){
-		var rock= new Obstacle('marble.png', 50, 100, 50, 50);
-		this.obstacles.push(rock);
+		var bush = new Obstacle('bush.png', 200, 200, 120, 90);
+		this.obstacles.push(bush);
 	}
 }

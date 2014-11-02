@@ -69,7 +69,7 @@ checkPickUpItem: function(){
 fujiHitObstacle: function(){
 
 	var obstacle = touchingItem(this.fujiController.fujiLocation(), this.currentBackground.obstacles);
-	console.log("you have HIT!", !!obstacle);
+	// console.log("you have HIT!", !!obstacle);
 	return !!obstacle; 
 },
 addToBackPack: function(item){
@@ -89,19 +89,56 @@ function touchingItem(fujiLocation, items){
 }
 
 function areTouching(fujiLocation, item){
-	if( inRange(fujiLocation[0], item.x) && inRange(fujiLocation[1], item.y)){
+	if( inRangeX(fujiLocation, item) && inRangeY(fujiLocation, item) ){
+		return true;
+	}
+	return false;
+}
+
+function inRangeX(fujiLocation, item){
+
+	var fujiX = fujiLocation[0];
+	var itemX = item.x;
+
+	if ( itemX >= fujiX && itemX - fujiX < FUJI_WIDTH ){
+		console.log("hit X")
+
+
+		return true;
+	} 
+	else if ( fujiX >= itemX && fujiX - itemX < item.width){
+		console.log("hit X")
+
 		return true;
 	}
 
+
+	return false; 	
 }
 
-function inRange(fujiCord, itemCord){
-	if (Math.abs(fujiCord - itemCord) <= TOUCHING_RANGE){
+function inRangeY(fujiLocation, item){
+
+	var fujiY = fujiLocation[1];
+	var itemY = item.y;
+	console.log("fuji y", fujiY)
+		console.log("itemy", itemY)
+
+	if ( itemY >= fujiY && itemY - fujiY < FUJI_HEIGHT){
+		console.log("fuji y", fujiY)
+		console.log("itemy", itemY)
+		return true;
+	} 
+	else if ( fujiY >= itemY && fujiY - itemY < item.height){
+		console.log("fuji y", fujiY)
+		console.log("itemy", itemY)
 		return true;
 	}
+
+
+	return false; 	
 }
 
 
-TOUCHING_RANGE = 20;
+TOUCHING_RANGE = 50;
 
 
