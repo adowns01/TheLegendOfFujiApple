@@ -17,6 +17,7 @@ Draw = {
 
 	screen: function(){
 		this.background();
+		this.obstacles();
 		this.items();
 		this.fujiApple();
 	}, 
@@ -27,6 +28,12 @@ Draw = {
 			CANVAS.drawImage(item.image, item.x, item.y, item.width, item.height)
 		}
 	}, 
+	obstacles: function(){
+		for(var i = 0; i < this.currentBackground.obstacles.length; i++){
+			item = this.currentBackground.obstacles[i]
+			CANVAS.drawImage(item.image, item.x, item.y, item.width, item.height)
+		}
+	},
 	background: function(){
 		CANVAS.drawImage(BACKGROUND, 0, 0, 700, 300)
 	},

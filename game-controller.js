@@ -20,21 +20,33 @@ gameController.prototype = {
 	}, 
 	determineKeyPressAction: function(e){
 		if (this.in_startup_screen && e.keyCode == 13){ // enter
-				this.loadMainPlay();
+			this.loadMainPlay();
 		}
 		else if (!this.backpackController.is_open() || e.keyCode == 90){
 			switch (e.keyCode){
 			case 37:// left arrow
 			this.fujiController.moveLeft();
+			if( this.fujiHitObstacle() ){
+				this.fujiController.moveRight();
+			}
 			break;
 			case 39: //right arrow
 			this.fujiController.moveRight();
+			if( this.fujiHitObstacle() ){
+				this.fujiController.moveLeft();
+			}
 			break;
 			case 38: //up arrow
 			this.fujiController.moveUp();
+			if( this.fujiHitObstacle() ){
+				this.fujiController.moveDown();
+			}
 			break;
 			case 40: //down arrow
 			this.fujiController.moveDown();
+			if( this.fujiHitObstacle() ){
+				this.fujiController.moveUp();
+			}
 			break;
 			case 90: // z
 			this.backpackController.toggle();
@@ -42,23 +54,30 @@ gameController.prototype = {
 			case 32: // space
 			putItemRandomlyOnPage();
 			break;
-			}
-			this.checkPickUpItem();
 		}
-	},
-	checkPickUpItem: function(){
-		var item = touchingItem(this.fujiController.fujiLocation(), this.currentBackground.items);
-		if (item){
-			this.addToBackPack(item);
-			this.removeItemFromScreen(item);
-		}
-	}, 
-	addToBackPack: function(item){
-		this.backpackController.addItem(item)
-	}, 
-	removeItemFromScreen: function(item){
-		Draw.removeItemFromScreen(item)
+		this.checkPickUpItem();
+
 	}
+},
+checkPickUpItem: function(){
+	var item = touchingItem(this.fujiController.fujiLocation(), this.currentBackground.items);
+	if (item){
+		this.addToBackPack(item);
+		this.removeItemFromScreen(item);
+	}
+}, 
+fujiHitObstacle: function(){
+
+	var obstacle = touchingItem(this.fujiController.fujiLocation(), this.currentBackground.obstacles);
+	console.log("you have HIT!", !!obstacle);
+	return !!obstacle; 
+},
+addToBackPack: function(item){
+	this.backpackController.addItem(item)
+}, 
+removeItemFromScreen: function(item){
+	Draw.removeItemFromScreen(item)
+}
 }
 
 function touchingItem(fujiLocation, items){
@@ -81,6 +100,7 @@ function inRange(fujiCord, itemCord){
 		return true;
 	}
 }
+
 
 TOUCHING_RANGE = 20;
 
