@@ -96,45 +96,28 @@ function areTouching(fujiLocation, item){
 }
 
 function inRangeX(fujiLocation, item){
-
 	var fujiX = fujiLocation[0];
 	var itemX = item.x;
 
 	if ( itemX >= fujiX && itemX - fujiX < FUJI_WIDTH ){
-		console.log("hit X")
-
-
 		return true;
 	} 
 	else if ( fujiX >= itemX && fujiX - itemX < item.width){
-		console.log("hit X")
-
 		return true;
 	}
-
-
 	return false; 	
 }
 
 function inRangeY(fujiLocation, item){
-
 	var fujiY = fujiLocation[1];
 	var itemY = item.y;
-	console.log("fuji y", fujiY)
-		console.log("itemy", itemY)
 
 	if ( itemY >= fujiY && itemY - fujiY < FUJI_HEIGHT){
-		console.log("fuji y", fujiY)
-		console.log("itemy", itemY)
 		return true;
 	} 
 	else if ( fujiY >= itemY && fujiY - itemY < item.height){
-		console.log("fuji y", fujiY)
-		console.log("itemy", itemY)
 		return true;
 	}
-
-
 	return false; 	
 }
 
