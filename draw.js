@@ -40,7 +40,8 @@ Draw = {
 		CANVAS.drawImage(BACKGROUND, 0, 0, 700, 300)
 	},
 	fujiApple: function(){
-		CANVAS.drawImage(FUJI, 0, 0, FUJI_WIDTH, FUJI_HEIGHT, this.fuji.left, this.fuji.top, FUJI_WIDTH, FUJI_HEIGHT);
+		console.log(this.fuji.image)
+		CANVAS.drawImage(this.fuji.image, 0, 0, FUJI_WIDTH, FUJI_HEIGHT, this.fuji.left, this.fuji.top, FUJI_WIDTH, FUJI_HEIGHT);
 	}, 
 	backpack: function(){
 		CANVAS.drawImage(BACKPACK, 0, 0, 700, 300)

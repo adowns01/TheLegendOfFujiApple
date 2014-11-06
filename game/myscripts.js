@@ -8,8 +8,7 @@ $(document).ready(function(){
 	// create fuji
 	var myFuji = new Fuji();
 	var myFujiController = new FujiController(myFuji);
-
-
+	myFujiController.makeSprites();
 
 	// create backpack
 	var my_backpackModel = new Backpack();
