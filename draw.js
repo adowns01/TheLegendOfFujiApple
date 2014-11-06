@@ -1,16 +1,16 @@
 FUJI = new Image();
-FUJI.src = 'fuji.png';
+FUJI.src = 'images/fuji.png';
 FUJI_HEIGHT = 72;
 FUJI_WIDTH = 72;
 
 BACKGROUND = new Image();
-BACKGROUND.src = 'fuji-bg.png'
+BACKGROUND.src = 'images/fuji-bg.png'
 
 BACKPACK = new Image();
-BACKPACK.src = 'backpack.png';
+BACKPACK.src = 'images/backpack.png';
 
 STARTUP_SCREEN = new Image();
-STARTUP_SCREEN.src = 'startup-screen-bg.png'
+STARTUP_SCREEN.src = 'images/startup-screen-bg.png'
 
 Draw = {
 	fuji: null,
