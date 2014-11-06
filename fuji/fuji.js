@@ -1,10 +1,11 @@
-FUJI_STEP_SIZE = 10;
+FUJI_STEP_SIZE = 5;
 
 
 function Fuji() {
 	this.top = 0;
 	this.left = 0;
 	this.stepSize = FUJI_STEP_SIZE;
+	this.image = FUJI;
 }
 
 Fuji.prototype = {
@@ -19,5 +20,8 @@ Fuji.prototype = {
 	}, 
 	moveDown: function(){
 		this.top += this.stepSize;
+	}, 
+	setImage: function(image){
+		this.image = image;
 	}
 }
