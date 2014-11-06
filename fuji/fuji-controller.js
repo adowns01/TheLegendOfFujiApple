@@ -1,3 +1,5 @@
+SPRITE_ANIMATION_TIME
+
 function FujiController(model) {
 	this.model = model; 
 	this.fujiRight = [];
@@ -14,7 +16,7 @@ FujiController.prototype = {
 
 		this.model.setImage(this.fujiLeft[1]);
 		this.model.moveLeft();
-		setTimeout(this.draw, 100);
+		setTimeout(this.draw, SPRITE_ANIMATION_TIME);
 	}, 
 	moveRight: function(){
 		this.model.setImage(this.fujiRight[0])
@@ -23,7 +25,7 @@ FujiController.prototype = {
 
 		this.model.setImage(this.fujiRight[1]);
 		this.model.moveRight();
-		setTimeout(this.draw, 100);
+		setTimeout(this.draw, SPRITE_ANIMATION_TIME);
 	}, 
 	moveUp: function(){
 		this.model.setImage(this.fujiUp[0])
@@ -32,7 +34,7 @@ FujiController.prototype = {
 
 		this.model.setImage(this.fujiUp[1]);
 		this.model.moveUp();
-		setTimeout(this.draw, 100);
+		setTimeout(this.draw, SPRITE_ANIMATION_TIME);
 	}, 
 	moveDown: function(){
 		this.model.setImage(this.fujiForward[0])
@@ -41,7 +43,7 @@ FujiController.prototype = {
 
 		this.model.setImage(this.fujiForward[1]);
 		this.model.moveDown();
-		setTimeout(this.draw, 100);
+		setTimeout(this.draw, SPRITE_ANIMATION_TIME);
 	}, 
 	fujiLocation: function(){
 		return [this.model.left, this.model.top];
