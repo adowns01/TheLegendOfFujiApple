@@ -22,7 +22,7 @@ gameController.prototype = {
 		if (this.in_startup_screen && e.keyCode == 13){ // enter
 			this.loadMainPlay();
 		}
-		else if (!this.backpackController.is_open() || e.keyCode == 90){
+		else if (this.in_main_game_play &&(!this.backpackController.is_open() || e.keyCode == 90)){
 			switch (e.keyCode){
 			case 37:// left arrow
 			this.fujiController.moveLeft();
