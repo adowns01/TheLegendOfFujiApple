@@ -1,4 +1,4 @@
-SPRITE_ANIMATION_TIME
+SPRITE_ANIMATION_TIME = 50;
 
 function FujiController(model) {
 	this.model = model; 
